@@ -1,0 +1,1965 @@
+@import "fonts"
+@import "grid"
+
+$c-black: #000
+$c-white: #fff
+$font-size: 14px
+$font-family: 'Ubuntu', sans-serif
+$zIndex-popup: 1000
+
+
+*
+	margin: 0
+	padding: 0
+	outline: none !important
+
+html, body
+	overflow-x: hidden
+
+body
+	font: $font-size $font-family
+	color: $c-black
+	background: $c-white
+	box-sizing: border-box
+
+html, body, header, article, aside, main, footer, div, h1, h2, h3, h4, h5, h6, button
+	display: block
+
+meta, script, style
+	display: none
+
+h1
+	font-size: 24px
+h2
+	font-size: 20px
+h3
+	font-size: 16px
+h4
+	font-size: 14px
+h5
+	font-size: 12px
+h6
+	font-size: 10px
+
+a
+	color: $c-black
+	text-decoration: none
+
+
+ul, ol
+	margin: 0
+
+
+li
+	display: inline-block
+	list-style: none
+
+
+::placeholder
+	color: gray
+
+
+.t-left
+	text-align: left
+
+.t-center
+	text-align: center
+
+.t-right
+	text-align: right
+
+.t-italic
+	font-style: italic
+
+.t-bold
+	font-weight: bold
+
+
+.b-left
+	float: left
+
+.b-right
+	float: right
+
+
+
+// Grid
+// .container
+// 	position: relative
+// 	max-width: 1000px
+// 	margin: 0 auto
+// 	padding-left: 15px
+// 	padding-right: 15px
+
+.row, .clearfix
+	&:before, &:after
+		display: table
+		content: ''
+		box-sizing: border-box
+	&:after
+		clear: both
+
+.w2 > .col
+	width: 50%
+.w3 > .col
+	width: 33.333333333%
+.w4 > .col
+	width: 25%
+.w5 > .col
+	width: 20%
+.w6 > .col
+	width: 16.666666667%
+.col
+	display: block
+	float: left
+	min-height: 1px
+
+
+
+
+// Form
+
+button
+	cursor: pointer
+
+
+.input, .textarea, .button
+	display: block
+	outline: none
+	font-size: 12px
+	font-family: $font-family
+	width: 100%
+	box-sizing: border-box
+	margin-bottom: 10px
+	margin-top: 10px
+	background: $c-white
+
+.checkbox, .radio, .button, .checkbox__label, .radio__label
+	cursor: pointer
+
+.checkbox, .radio
+	input
+		display: none
+
+
+.input
+	padding: 4px 10px
+	border: 1px solid #DCDCDC
+
+
+.checkbox
+
+
+.checkbox__input:checked + .checkbox__label
+	border: 1px solid red
+
+
+.checkbox__label
+	width: 40px
+	height: 40px
+	display: block
+	cursor: pointer
+	border: 1px solid #787878
+
+
+
+.radio
+	position: relative
+
+.radio__label
+
+
+button
+	color: white
+	background: none
+	border: none
+
+.button
+	background: #787878
+	border: none
+	text-align: center
+	padding: 3px 10px
+	color: $c-white
+
+.textarea
+	resize: none
+
+
+select
+	font-family: "Ubuntu", sans-serif
+
+.select
+	position: relative
+	margin-top: 10px
+	margin-bottom: 10px
+	&.select_open
+		.select__title
+			&:after
+				transform: rotate(180deg)
+		.select__list
+			display: block
+	::-webkit-scrollbar
+		width: 7px
+		background: transparent
+
+	::-webkit-scrollbar-thumb
+		background: gray
+
+.select__title
+	border: 1px solid #DCDCDC
+	padding: 4px 10px
+	width: 100%
+	box-sizing: border-box
+	cursor: pointer
+	&:after
+		content: ''
+		position: absolute
+		top: 10px
+		right: 10px
+		width: 0
+		height: 0
+		border-style: solid
+		border-width: 7px 5px 0 5px
+		border-color: #000000 transparent transparent transparent
+		transition: .3s
+
+
+.select__list
+	display: none
+	z-index: 1
+	position: absolute
+	top: calc(100% - 1px)
+	left: 0
+	width: 100%
+	border: 1px solid #DCDCDC
+	background: $c-white
+	box-sizing: border-box
+	max-height: 110px
+	overflow-y: auto
+
+	
+.select__list-item
+	display: block
+	padding: 4px 10px
+	cursor: pointer
+	transition: .3s
+	&:hover
+		background: #DCDCDC
+
+.select__parsing
+	display: none
+
+@media screen and (max-width: 768px)
+	.select__list
+		position: relative
+		top: -1px
+
+
+
+
+
+
+
+
+// Elements
+	// Popup
+.popup
+    display: none
+
+.popup, .popup__bg
+    z-index: $zIndex-popup
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+
+.popup__window
+    z-index: $zIndex-popup + 2
+    position: relative
+    width: 400px
+    height: 300px
+    margin-left: auto
+    margin-right: auto
+    background: $c-white
+
+.popup__container
+    height: 100%
+
+.popup__title
+    text-align: center
+
+.popup__close
+    position: absolute
+    top: 0
+    right: 0
+    width: 20px
+    height: 20px
+
+.popup__bg
+    z-index: $zIndex-popup + 1
+    position: fixed
+    background: rgba(0, 0, 0, .3)
+
+
+
+// Tabs
+.tabs
+
+.tabs__nav
+
+.tabs__nav-item
+	// margin-right: 10px
+	// padding: 4px 8px
+	cursor: pointer
+	// border-radius: 3px 3px 0 0
+	transition: .3s
+	&.tabs__nav-item_select, &:hover
+		color: #F15A29
+
+.tabs__content
+	min-height: 200px
+	// border: 1px solid #DCDCDC
+	// border-radius: 0 0 3px 3px
+	padding: 10px
+.tabs__tab
+	display: none
+
+// Nav
+.nav
+	
+
+.nav__item
+
+.nav__item-a
+	
+
+
+// Pagination
+.pagination
+	margin-top: 10px
+	margin-bottom: 10px
+	text-align: center
+.pagination__item
+	margin-left: -2px
+	margin-right: 3px
+	&.pagination__item_select, &:hover
+		a
+			background: #DCDCDC
+	a
+		display: inline-block
+		padding: 4px 10px
+		border-radius: 3px
+		transition: .3s
+		
+
+
+// Accordion
+.accordion
+	margin-top: 10px
+	margin-bottom: 10px
+.accordion__item
+	display: block
+	margin-bottom: 5px
+	&:hover
+		> .accordion__list
+			display: block
+
+.accordion__list
+	.accordion__list
+		display: none
+		margin-left: 20px
+		transition: .3s
+		.accordion__item
+			margin-bottom: 2px
+@media screen and (max-width: 768px)
+	.accordion__list
+		.accordion__list
+			display: block
+
+
+// Breadcrumb
+.breadcrumb
+	// margin-top: 25px
+	margin-bottom: 15px
+	background: white
+	padding: 20px 15px
+	.icon-home
+		position: relative
+		display: inline-block
+		background: url('../img/icons/home.png')
+		width: 14px
+		height: 15px
+		top: 3px
+
+	li
+		margin-left: -6px
+		color: #696E6E
+		&:after
+			position: relative
+			display: inline-block
+			content: ''
+			margin-left: 8px
+			margin-right: 8px
+			background: url('../img/icons/arrow-right-bold.png')
+			width: 11px
+			height: 15px
+			top: 3px
+		&:first-of-type
+			margin-left: 0
+		&:last-of-type
+			&:after
+				display: none
+
+	a
+		color: black
+		transition: .3s
+		font-weight: bold
+
+.panel
+	color: rgba(255, 255, 255, 0.54)
+	background: black
+	font-size: 14px
+	font-weight: bold
+	padding-top: 16.5px
+	padding-bottom: 16.5px
+	a
+		color: rgba(255, 255, 255, 0.54)
+
+.panel__nav-sticks
+	display: none
+	border-bottom: 1px solid white
+	margin-left: -15px
+	margin-right: -15px
+	padding-bottom: 15px
+	span
+		display: block
+		width: 30px
+		height: 3px
+		margin-bottom: 5px
+		background: white
+		// margin-left: 15px
+		&:last-of-type
+			margin-bottom: 0
+
+.panel__nav-sticks-btn
+	width: 30px
+	height: 19px
+	cursor: pointer
+	margin-left: 15px
+
+.panel__nav
+	padding-top: 7px
+	li
+		margin-right: 23px
+		&:last-of-type
+			margin-right: 0
+
+.panel__trigger
+	padding-left: 25px
+
+.trigger
+	display: inline-block
+	margin-right: 11px
+	&.fz11px
+		button
+			font-size: 11px
+	.trigger__item
+		vertical-align: top
+		display: inline-block
+		width: 30px
+		height: 30px
+		text-align: center
+		border: 2px solid transparent
+		border-radius: 50%
+		box-sizing: border-box
+		&.trigger__item_select
+			border: 2px solid rgba(255, 255, 255, 0.54)
+	button
+		line-height: 24px
+		width: 26px
+		// margin-left: auto
+		// margin-right: auto
+		color: rgba(255, 255, 255, 0.54)
+		font-weight: bold
+		cursor: pointer
+
+
+.panel__enter
+	color: white
+	a
+		color: white
+	svg
+		width: 30px
+		height: 30px
+		margin-right: 5px
+		vertical-align: middle
+	path
+		opacity: 1
+		fill: white
+
+.panel__enter_lk
+	padding-top: 6px
+.panel__enter_profile
+	padding-top: 2px
+
+
+.header
+	padding-bottom: 23.5px
+	.col
+		box-sizing: border-box
+
+.header__content
+	position: static
+	margin-top: 30px
+
+.header__logo
+	display: inline-block
+	margin-top: 20px
+	img
+		width: 300px
+
+.header__logo-block
+	// padding-right: 0
+
+
+.drop-nav__btn-toggle
+	display: inline-block
+	position: relative
+	color: white
+	background: #F15A29
+	padding: 12.5px 15px 12.5px 20px
+	border-radius: 30px
+	font-weight: bold
+	width: 150px
+	box-sizing: border-box
+	cursor: pointer
+	margin-left: 25px
+	margin-right: 50px
+	vertical-align: top
+	i
+		position: absolute
+		display: inline-block
+		background-image: url("../img/icons/arrow-down.png")
+		width: 12px
+		height: 19px
+		right: 15px
+	&.drop-nav__btn-toggle_click
+		i
+			transform: rotate(180deg)
+
+.drop-nav
+	z-index: 1001
+	display: none
+	position: absolute
+	left: 0
+	top: 165px
+	width: 100%
+	color: white
+	background: rgb(241,90,41)
+	background: -moz-linear-gradient(left, rgb(241,90,41) 0%, rgb(241,90,41) 50%, rgb(241,90,41) 50%, rgb(0,160,224) 50%, rgb(0,160,224) 100%)
+	background: -webkit-linear-gradient(left, rgb(241,90,41) 0%,rgb(241,90,41) 50%,rgb(241,90,41) 50%,rgb(0,160,224) 50%,rgb(0,160,224) 100%)
+	background: linear-gradient(to right, rgb(241,90,41) 0%,rgb(241,90,41) 50%,rgb(241,90,41) 50%,rgb(0,160,224) 50%,rgb(0,160,224) 100%)
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f15a29', endColorstr='#00a0e0',GradientType=1 )
+	.container
+		position: relative
+	.col
+		box-sizing: border-box
+	a
+		color: white
+	ul
+		li
+			display: block
+			font-weight: 300
+			margin-bottom: 12px
+
+
+
+.drop-nav__col
+	padding: 20px 20px 35px
+
+.drop-nav__title
+	font-size: 22px
+	font-weight: bold
+	margin-bottom: -10px
+
+.drop-nav__subtitle
+	font-weight: bold
+	margin-top: 40px
+	margin-bottom: 15px
+
+.drop-nav__btn-close
+	position: absolute
+	// display: none
+	width: 40px
+	height: 40px
+	left: calc(50% - 20px)
+	bottom: -20px
+	border-radius: 50%
+	background: #4F5D73
+	text-align: center
+	line-height: 40px
+	transform: rotate(-90deg)
+	cursor: pointer
+	svg
+		position: relative
+		width: 9px
+		height: 9px
+		opacity: 1
+		top: 3px
+		left: 1px
+	polygon, g
+		opacity: 1
+		fill: white
+
+
+.search
+	display: inline-block
+	border: 1px solid #C8CACB
+	border-radius: 30px
+	box-sizing: border-box
+	vertical-align: top
+	margin-right: 50px
+	input
+		border: none
+		font-size: 12px
+		font-weight: 300
+		display: inline-block
+		background: none
+		width: 156px
+	svg
+		width: 23px
+		height: 20px
+		margin-right: 5px
+		vertical-align: middle
+		display: inline-block
+		margin-left: 10px
+	path
+		opacity: 1
+		fill: #58595B
+
+.header__contacts
+	margin-top: 5px
+	display: inline-block
+	width: 150px
+	vertical-align: top
+	svg
+		float: left
+		width: 30px
+		height: 30px
+		margin-right: 10px
+		vertical-align: middle
+		display: inline-block
+	path
+		opacity: 1
+		fill: #F15A29
+
+.header__phone
+	font-size: 14px
+	font-weight: bold
+	color: #F15A29
+
+.header__callback
+	display: block
+	font-size: 12px
+	font-weight: 300
+	color: #808080
+	margin-top: 0px
+
+.socials
+	display: inline-block
+	display: none
+	// margin-top: 30px
+	vertical-align: top
+	a
+		display: inline-block
+		width: 28px
+		height: 28px
+		box-sizing: border-box
+		border: 1px solid #B8B9BB
+		border-radius: 50%
+		text-align: center
+		line-height: 27px
+
+.socials__vk
+	svg
+		position: relative
+		width: 9.25px
+		left: 1px
+.socials__fb
+	svg
+		position: relative
+		width: 7px
+		top: 1px
+
+.header__counts
+	font-weight: bold
+	margin-top: 5px
+	display: inline-block
+	margin-left: 35px
+	vertical-align: top
+	svg
+		vertical-align: middle
+		margin-right: 10px
+	path, circle
+		opacity: 1
+		fill: #F15A29
+.header__wishlist, .header__cart
+	display: inline-block
+.header__wishlist
+	margin-right: 20px
+	svg
+		width: 26px
+		height: 25px
+.header__cart
+	svg
+		width: 32px
+		height: 30px
+
+
+.header__counts-block
+	// padding-left: 0
+	// padding-right: 0
+	
+.slider
+	.slick-prev
+		z-index: 1000
+		left: 60px
+		padding-right: 4px
+
+	.slick-next
+		z-index: 1000
+		left: 108px
+		right: auto
+		padding-left: 4px
+		
+			
+	.slick-arrow
+		width: 40px
+		height: 40px
+		border: 1px solid white
+		border-radius: 50%
+		top: auto
+		bottom: 0px
+		box-sizing: border-box
+		&:before
+			display: none
+		svg
+			width: 12.5px
+		g, path, polygon
+			opacity: 1
+			fill: white
+
+.slider-index__arrows
+	position: relative
+
+.slider__item_standart
+	width: 100%
+	height: 395px
+	font-weight: bold
+	background: url('../img/bg/slider-2.png') no-repeat center top, url('../img/bg/slider-1.jpg') no-repeat center top
+	// background-size: cover
+
+.slider__text
+	color: white
+	float: left
+
+.slider__img_right
+	float: right
+
+
+#main
+	background: #E6E7E9
+	padding-top: 15px
+
+
+
+.product-p__images-block
+	padding-right: 0
+	box-sizing: border-box
+
+
+.product-p__images-item
+	width: 100px !important
+	height: 100px !important
+	overflow: hidden
+	margin-bottom: 17px
+	cursor: pointer
+	img
+		width: 100%
+
+.product-p__image-block
+	padding-left: 25px
+	box-sizing: border-box
+
+.product-p__image
+	height: 530px
+	width: 100%
+	background: white
+	// margin-left: 25px
+	box-sizing: border-box
+
+.product-p__image-item
+	text-align: center
+	img
+		display: inline-block
+		height: auto !important
+		max-width: 100%
+		line-height: 530px
+		max-height: 530px
+		vertical-align: middle
+
+.product-p__content
+	box-sizing: border-box
+	p
+		font-weight: bold
+		font-size: 14px
+		line-height: 23px
+		span
+			color: #696E6E
+			font-weight: normal
+			&.c-green
+				color: #2BC64A
+
+.product-p__row
+	
+
+
+.product-p__title
+	font-size: 32px
+	font-weight: bold
+	margin-top: -6px
+	margin-bottom: 20px
+
+
+
+.product-p__rating
+	display: inline-block
+	margin-right: 7px
+	padding-top: 1px
+
+.product-p__review-data
+	display: inline-block
+	font-size: 14px
+	span
+		display: inline-block
+		margin-right: 5px
+		// margin-left: 5px
+	a
+		color: #F15A29
+
+
+.product-p__price
+	margin-top: 10px
+	font-weight: bold
+	.price
+		font-size: 32px
+		color: #F15A29
+	.price-old
+		display: inline-block
+		color: #696E6E
+		font-size: 21px
+		text-decoration: line-through
+		margin-left: 5px
+		margin-bottom: 12px
+
+
+.product-p__data
+	padding: 5px 0
+	border-top: 1px solid #5CC08A
+	border-bottom: 1px solid #5CC08A
+	margin: 10px 0
+	p
+		margin: 5px 0
+	span
+		margin-left: 5px
+
+.product-p__subtitle
+	font-size: 24px
+	font-weight: bold
+	margin-bottom: 10px
+
+
+.product-p__count-block
+	margin-top: 40px
+	span
+		display: inline-block
+		line-height: 38px
+		vertical-align: top
+		margin-right: 4px
+.product-p__count
+	display: inline-block
+	*
+		display: inline-block
+		vertical-align: top
+		width: 40px
+		height: 38px
+		text-align: center
+		background: white
+		color: black
+	input
+		border: 1px solid #696E6E
+		padding-left: 3px
+		padding-right: 3px
+		box-sizing: border-box
+
+	button
+		font-size: 14px
+		cursor: pointer
+
+
+.product-p__btn-add-cart
+	color: #F15A29
+	font-size: 24px
+	line-height: 38px
+	display: inline-block
+	vertical-align: top
+	margin-left: 13px
+	svg
+		width: 25px
+		height: 25px
+		position: relative
+		top: 4px
+	path, g, circle
+		opacity: 1
+		fill: #F15A29
+
+
+.product-p__btns
+	margin-top: 15px
+
+
+.product-p__btn-wishlist
+	display: inline-block
+	color: #F15A29
+	vertical-align: middle
+	svg
+		opacity: 1
+		width: 19px
+		height: 20px
+		vertical-align: middle
+	path, g
+		opacity: 1
+		fill: #F15A29
+
+.product-p__btn-compare
+	display: inline-block
+	color: #F15A29
+	vertical-align: middle
+	margin-left: 40px
+	svg
+		opacity: 1
+		width: 25px
+		height: 20px
+		vertical-align: middle
+	path, g
+		fill: #F15A29
+		opacity: 1
+
+	.cls-1
+		opacity: 1
+		fill:none
+		stroke: #f15a29
+		stroke-linecap: round
+		stroke-linejoin: round
+		stroke-width: 1.44px
+
+
+
+.product-p__tabs-row
+	margin-top: 40px
+	.col
+		box-sizing: border-box
+	.col-lg-4
+		padding-right: 0
+	.col-lg-8
+		padding-left: 0
+	.tabs__nav-item
+		display: block
+		background: white
+		font-size: 18px
+		border-bottom: 1px solid #888C8D
+		margin-right: 0
+		padding: 10px 15px
+		font-weight: bold
+		color: #696E6E
+
+	.tabs__nav-item_select, .tabs__nav-item:hover
+		color: #EE7D59 !important
+		background: white !important
+
+.product-p__tabs-nav
+	border-top: 2px solid #EE7D59
+	border-left: 1px solid #888C8D
+
+
+
+
+
+
+.product-p__tabs-content
+	border-top: 2px solid #EE7D59
+	border-left: 1px solid #888C8D
+	border-right: none
+	border-bottom: none
+	box-sizing: border-box
+	border-radius: 0
+	min-height: 250px
+	p
+		line-height: 23px
+		margin-bottom: 15px
+		color: #696E6E
+		&:last-of-type
+			margin-bottom: 0
+		span
+			color: black
+			font-weight: bold
+	.tabs__tab
+		padding: 70px 45px 65px
+
+.form-group
+	margin-bottom: 20px
+	label
+		display: block
+		margin-bottom: 7px
+
+	select
+		width: 100%
+		box-sizing: border-box
+		padding: 10px
+		border: 1px solid #696E6E
+
+
+
+.nav-block
+	background: white
+	// margin-bottom: 50px
+
+.nav-block__title
+	color: white
+	background: #F15A29
+	font-size: 20px
+	padding: 20px 23px
+	*
+		vertical-align: middle
+		display: inline-block
+	i
+		display: inline-block
+		background: url('../img/icons/hum.png')
+		width: 25px
+		height: 30px
+	span
+		margin-left: 27.5px
+
+.nav-block__list
+	border-left: 1px solid #C7C7C8
+	border-right: 1px solid #C7C7C8
+	li
+		font-size: 16px
+		display: block
+		border-bottom: 1px solid #888889
+	a
+		display: block
+		padding: 10px 17px
+		color: #696E6E
+
+.block-offer
+	margin-bottom: 55px
+
+.block-offer__title
+	color: white
+	background: #231F20
+	text-transform: uppercase
+	font-weight: bold
+	font-size: 23px
+	padding: 18px
+	box-sizing: border-box
+	margin-bottom: 20px
+
+
+
+
+
+.content
+	.col
+		box-sizing: border-box
+
+.content__text
+	background: white
+	border: 1px solid #C7C7C8
+	padding: 20px
+	color: #696E6E
+	h1
+		font-size: 34px
+		font-weight: normal
+		margin-bottom: 35px
+	p
+		margin-bottom: 15px
+		font-size: 16px
+
+
+.category
+	.col
+		box-sizing: border-box
+
+
+.category__img
+	width: 210px
+	text-align: center
+	img
+		display: inline-block
+		max-width: 120px
+		vertical-align: top
+
+.category__text
+	color: #696E6E
+	width: 650px
+	padding-top: 15px
+	p
+		line-height: 23px
+		margin-bottom: 15px
+		&:last-of-type
+			margin-bottom: 0
+	strong
+		color: black
+		font-weight: bold
+
+
+
+
+.category__sub
+	margin-top: 55px
+
+.category__sub-title
+	font-weight: bold
+	font-size: 18px
+	margin-bottom: 15px
+
+
+.category__sub-item
+	float: left
+	background: white
+	width: 200px
+	text-align: center
+	margin-bottom: 15px
+	margin-right: 23px
+	&:nth-of-type(4n + 1)
+		margin-right: 0
+
+.category__sub-img
+	border-bottom: 3px solid #F5F5F6
+	img
+		display: inline-block
+		max-width: 170px
+		max-height: 190px
+		line-height: 190px
+
+.category__sub-text
+	display: block
+	color: #696E6E
+	padding: 12px 5px
+
+
+.category__sort
+	margin-top: 17px
+	margin-bottom: 22px
+	background: white
+	button
+		display: block
+		cursor: pointer
+	.col
+		border-right: 2px solid #EAEBED
+		height: 50px
+		&:last-of-type
+			border-right: none
+
+
+
+.category__sort-list
+	padding: 17px
+	svg
+		width: 19px
+		height: 20px
+	rect
+		fill: #696E6E !important
+
+.category__sort-table
+	padding: 17px
+	svg
+		width: 15px
+		height: 20px
+	rect
+		fill: #696E6E !important
+
+.category__sort-as
+	width: 270px
+	color: #696E6E
+	font-family: $font-family
+	padding: 0 3px
+	select
+		border: none
+		width: 265px
+		padding: 15px 0
+
+.category__sort-compare
+	padding: 15px
+	svg
+		width: 25px
+	
+	
+.category__sort-text
+	text-align: right
+	color: #696E6E
+	padding: 17px 10px 17px 236px
+	box-sizing: border-box
+
+.category__sort-kolvo
+
+	select
+		border: none
+		width: 115px
+		padding: 15px 0
+
+
+
+.product
+	position: relative
+	max-height: 435px
+	background: white
+	text-align: center
+	padding: 0 0 25px
+
+.product__label
+	z-index: 10
+	position: absolute
+	color: white
+	background: #F15A29
+	top: 16px
+	left: 18px
+	font-weight: bold
+	font-size: 12px
+	padding: 1px 3px
+
+
+.product__name
+	width: 200px
+	font-weight: bold
+	display: block
+	margin-left: auto
+	margin-right: auto
+
+.product__buttons
+	margin-top: 15px
+	svg
+		opacity: 1
+	g, rect, circle, path
+		fill: black
+		opacity: 1
+	button
+		display: inline-block
+		margin: 0 10px
+
+
+
+.product__btn-add-cart
+	svg
+		width: 22px
+		height: 20px
+
+.product__btn-wishlist
+	svg
+		width: 20px
+		height: 20px
+
+.product__btn-compare
+	svg
+		width: 17px
+		height: 20px
+
+.product__img
+	text-align: center
+	img
+		display: inline-block
+		max-width: 100%
+		max-height: 265px
+		line-height: 265px
+		vertical-align: middle
+
+.product__rating
+	margin-bottom: 10px
+
+
+.product__price
+	font-weight: bold
+	.price
+		font-size: 20px
+		color: #F15A29
+	.price-old
+		display: inline-block
+		text-decoration: line-through
+		margin-left: 5px
+
+
+
+.advantages
+	text-align: center
+	margin-top: 20px
+	margin-bottom: 20px
+
+.advantages__title
+	color: white
+	background: #696E6E
+	font-weight: bold
+	padding: 10px
+
+.advantages__list
+	background: white
+	border: 1px solid #C7C7C8
+	border-top: none
+	padding-left: 3px
+	padding-right: 3px
+	padding-bottom: 20px
+	.col
+		box-sizing: border-box
+
+.advantages__item
+	position: relative
+	padding-top: 15px
+	padding-bottom: 5px
+	&:nth-of-type(1), &:nth-of-type(2), &:nth-of-type(3)
+		&:after
+			position: absolute
+			content: ''
+			width: 1px
+			height: 160px
+			background: #8E9292
+			right: 0
+			top: 170px
+	&:nth-of-type(5), &:nth-of-type(6), &:nth-of-type(7), &:nth-of-type(8)
+		&:before
+			position: absolute
+			content: ''
+			top: 0
+			left: 0
+			height: 1px
+			width: 100%
+			background: #8E9292
+	&:nth-of-type(5)
+		&:before
+			left: 15px
+
+	&:nth-of-type(8)
+		&:before
+			left: -15px
+
+.advantages__round
+	width: 85px
+	height: 85px
+	text-align: center
+	margin-left: auto
+	margin-right: auto
+	border-radius: 50%
+	background: #F15A29
+	color: white
+	line-height: 85px
+	font-weight: bold
+
+.advantages__sub-title
+	font-weight: bold
+	font-size: 20px
+	color: #696E6E
+	height: 45px
+	margin-top: 7px
+	margin-bottom: 10px
+
+.advantages__text
+
+.advantages__icon-w
+	height: 100px 
+
+
+
+.advantages__text
+	height: 70px
+
+
+
+
+
+.main-category
+	margin-top: 15px
+	.col
+		box-sizing: border-box
+
+
+.main-category__item
+	position: relative
+
+.main-category__title
+	font-size: 27px
+	font-weight: bold
+	color: #F15A29
+	margin-bottom: 30px
+
+.main-category__item
+	position: relative
+	background: white
+	height: 295px
+	margin-bottom: 25px
+	border-bottom: 12px solid #F15A29
+	padding: 30px 30px 50px
+	box-sizing: border-box
+
+
+.main-category__list
+	font-size: 16px
+	font-weight: 300
+	li
+		display: block
+		margin-bottom: 15px
+		&:last-of-type
+			a
+				&:after
+					display: none
+	a
+		position: relative
+		z-index: 11
+		&:after
+			position: absolute
+			content: ''
+			width: 111px
+			height: 1px
+			left: 0
+			bottom: -8px
+			background: #BCB7BB
+
+
+.main-category__item_big
+	margin-bottom: 37px
+	border-bottom: none
+	padding: 0
+	height: auto
+	img
+		width: 100%
+		display: block
+	.main-category__img
+		position: relative
+	.main-category__title
+		z-index: 11
+		position: absolute
+		top: 120px
+		color: white
+		font-size: 32px
+		width: 305px
+		background: rgba(0,0,0,.67)
+		padding: 25px
+		box-sizing: border-box
+		margin-bottom: 0
+		&.main-category__title_left
+			border-right: 13px solid #84BD3F
+		&.main-category__title_right
+			left: auto
+			right: 0
+			text-align: right
+			border-left: 13px solid #00A5E6
+
+
+.main-category__img
+	z-index: 10
+	position: absolute
+	right: 0
+	bottom: 0
+
+.main-category__img_3
+	right: -38px
+	bottom: -3px
+	img
+		width: 195px
+
+.main-category__img_4
+	right: -38px
+	bottom: -35px
+	img
+		width: 320px
+
+.main-category__img_5
+	right: -60px
+	bottom: -40px
+	img
+		width: 290px
+
+.main-category__img_6
+	right: -20px
+	bottom: -30px
+	img
+		width: 210px
+
+.main-category__img_7
+	right: -15px
+	bottom: -3px
+	img
+		width: 300px
+
+.main-category__img_8
+	right: 7px
+	bottom: -30px
+	img
+		width: 131px
+
+
+
+// .case
+	
+
+
+
+.rating
+	svg
+		width: 12px
+		height: 12px
+	path
+		opacity: 1
+		fill: #F15A29
+
+
+.bestseller
+	margin-top: 40px
+	.col
+		box-sizing: border-box
+	// .tabs__content
+	// 	.col-lg-4
+	// 		width: 295px !important
+	.slick-arrow
+		top: -65px
+		&:before
+			opacity: 1 !important
+	.slick-prev
+		right: 50px
+		left: auto
+	.slick-next
+		right: 25px
+
+	.slick-track
+		width: 3835px !important
+.bestseller__panel
+	margin-bottom: 25px
+	background: #000
+	color: white
+	a
+		color: white
+
+.bestseller__title
+	font-weight: bold
+	font-size: 26px
+	text-transform: uppercase
+	padding: 15px 20px
+
+.bestseller__links
+	font-weight: bold
+	margin-top: 22px
+	li
+		margin-left: 20px
+		&:first-of-type
+			margin-left: 0
+
+.manufacturers
+	background: black
+	text-align: center
+	padding-top: 20px
+	padding-bottom: 5px
+	margin-top: 20px
+	.col
+		box-sizing: border-box
+	li
+		display: inline-block
+		margin-left: 8px
+		margin-right: 8px
+		img
+			vertical-align: middle
+			line-height: 100px
+
+
+.footer
+	// display: none
+	.col
+		box-sizing: border-box
+
+
+.footer__top
+	color: white
+	background: #000
+	padding-top: 60px
+	padding-bottom: 50px
+	a
+		color: white
+
+
+.footer__news
+	font-weight: 300
+
+.footer__news-title
+	text-transform: uppercase
+	font-size: 22px
+	font-weight: 300
+	color: #8A8C8F
+	margin-bottom: 25px
+
+
+
+.footer__news-item
+	margin-bottom: 20px
+	&:last-of-type
+		margin-bottom: 0
+
+
+.footer__news-data
+	color: #F15A29
+
+.footer__news-text
+	font-size: 16px
+
+
+
+
+
+.footer__advantages
+
+
+.footer__advantages-icon
+	display: inline-block
+	width: 60px
+	height: 60px
+	border: 4px solid #F15A29
+	border-radius: 50%
+	text-align: center
+	line-height: 73px
+	vertical-align: top
+	svg
+	path, g
+		opacity: 1
+		fill: #F15A29
+
+
+
+.footer__advantages-content
+	display: inline-block
+	width: 260px
+	vertical-align: top
+	padding-top: 2px
+	margin-left: 20px
+	font-weight: 300
+
+.footer__advantages-item
+	margin-bottom: 30px
+	&:last-of-type
+		margin-bottom: 0
+
+.footer__advantages-title
+	font-size: 20px
+	font-weight: 300
+	margin-bottom: 15px
+
+.footer__advantages-text
+	font-size: 12px
+	font-weight: 300
+
+
+
+.footer__lk
+	
+
+.footer__title_orange
+	color: #F15A29
+	font-weight: bold
+	font-size: 16px
+	margin-bottom: 22px
+	
+.footer__lk-list
+	margin-bottom: 50px
+	li
+		display: block
+		margin-bottom: 17px
+	a
+		color: rgba(255,255,255,0.71)
+
+.footer__phone
+	display: inline-block
+	color: #C8CACB
+	vertical-align: middle
+	margin-right: 50px
+	margin-bottom: 20px
+	svg
+		display: inline-block
+		width: 30px
+		height: 30px
+		margin-right: 12px
+		vertical-align: middle
+	g, path
+		opacity: 1
+		fill: #C8CACB
+	a
+		display: inline-block
+		vertical-align: middle
+		font-weight: bold
+		color: #C8CACB
+
+
+.footer__socials
+	display: inline-block
+	color: white
+	padding-top: 1px
+	a
+		border: 1px solid #303132
+		margin-right: 2px
+	g, path
+		opacity: 1
+		fill: #303132
+
+
+	.socials__vk
+		svg
+			position: relative
+			margin-right: 0.5px
+
+.footer__pay-title
+	color: #5F5F5F
+	margin-bottom: 5px
+	font-weight: 300
+
+
+.footer__title_line-before
+	color: white
+	border-bottom: 1px solid white
+	padding-bottom: 15px
+	margin-bottom: 15px
+
+
+
+
+.footer__middle
+	color: white
+	background: #F15A29
+	font-weight: 300
+	padding-top: 40px
+	padding-bottom: 65px
+	a
+		color: white
+
+
+
+
+
+.footer__nav
+	li
+		display: block
+		margin-bottom: 15px
+		&:last-of-type
+			margin-bottom: 0
+
+
+
+.footer__contacts
+	padding-top: 30px
+	.icon-w
+		width: 17px
+	svg
+		display: inline-block
+		vertical-align: middle
+		margin-right: 18px
+		height: 20px
+	path, g
+		opacity: 1
+		fill: white
+	p
+		margin-bottom: 15px
+		&:last-of-type
+			margin-bottom: 0
+
+
+.footer__bottom
+	color: white
+	background: black
+	padding-top: 12px
+	padding-bottom: 12px
+
+
+.footer__copy
+	padding-top: 8px
+	opacity: .47
+	font-weight: 300
+
+.footer__dev
+	float: right
+	width: 40px
+	height: 27px
+	a
+		// display: block
+		width: 40px
+		transition: all 0.2s 0.02s ease
+	img
+		opacity: 0.3;
+		-webkit-transition: all 0.3s;
+		-moz-transition: all 0.3s;
+		-ms-transition: all 0.3s;
+		-o-transition: all 0.3s;
+		transition: all 0.3s;
+		&:hover
+			opacity: 0.7;
+			-o-transform: rotate(360deg);
+			-ms-transform: rotate(360deg);
+			-moz-transform: rotate(360deg);
+			-webkit-transform: rotate(360deg);
+			transform: rotate(360deg);
+
+
+
+
+.contacts
+	h1, h2
+		font-size: 32px
+		color: #535353
+		font-weight: normal
+
+	h2
+		margin-bottom: 7px
+
+.contacts__box
+	border: 1px solid #C7C7C8
+	background: white
+	padding: 8px
+	font-size: 12px
+	color: #696E6E
+	margin-top: 12px
+	.col
+		position: relative
+		&:before
+			content: ''
+			position: absolute
+			right: 5px
+			top: -3px
+			height: 92px
+			width: 1px
+			background: #C7C7C8
+		&:last-of-type
+			&:before
+				display: none
+	.icon-w
+		display: inline-block
+		width: 17px
+		margin-right: 5px
+
+	.pl40
+		padding-left: 40px
+
+	.pl15
+		padding-left: 15px
+
+
+.contacts__title
+	font-weight: bold
+	height: 20px
+	span
+		display: inline-block
+		vertical-align: top
+
+.contacts__form
+	margin-top: 40px
+
+.contacts__item
+	margin-bottom: 20px
+	&:last-of-type
+		margin-bottom: 0
+
+.contacts__text
+	padding-left: 20px
+	vertical-align: top
+
+
+.contacts__line
+	margin-bottom: 15px
+	&:last-of-type
+		margin-bottom: 0
+	label
+		display: inline-block
+		width: 140px
+		margin-right: 15px
+		vertical-align: top
+		font-size: 12px
+		text-align: right
+		padding-top: 0px
+		color: #696E6E
+		&.pt4
+			padding-top: 7px
+	.input, .textarea
+		display: inline-block
+		width: 715px
+		vertical-align: top
+		margin-top: 0
+		margin-bottom: 0
+		border: 1px solid #BFBFC1
+		border-radius: 1px
+		padding: 7.5px
+	.textarea
+		height: 210px
+
+.contacts__button
+	float: right
+	margin-top: 40px
+	margin-bottom: 20px
+	color: white
+	background: #F15A29
+	text-transform: lowercase
+	font-size: 12px
+	height: 32px
+	width: 104px
+	border: 1px solid #959597
+
+
+.fz27
+	font-size: 27px
+
+.fz30
+	font-size: 30px
+
+.fz40
+	font-size: 40px
+
+.fz50
+	font-size: 50px
+
+.fz56
+	font-size: 56px
+
+.fz68
+	font-size: 68px
+
+.fz72
+	font-size: 72px	
+
+.c-orange
+	color: #F15A29
+
+.c-green
+	color: #2BC64A
+
+.c-red
+	color: #F15A29
+
+.mr5
+	margin-right: 5px
+
+.mt7
+	margin-top: 7px
+
+.mt25
+	margin-top: 25px
+
+.mb10
+	margin-bottom: 10px
+
+.mt50
+	margin-top: 50px
+
+
+.mr60
+	margin-right: 60px
